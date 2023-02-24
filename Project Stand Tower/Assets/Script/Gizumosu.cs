@@ -6,10 +6,11 @@ public class Gizumosu : MonoBehaviour
 {
     private void OnDrawGizmos()
     {
-        // Draw a small sphere at each waypoint position
-        for (int i = 0; i < Waypoints.waypoints.Length; i++)
-        {
+        if (Waypoints.waypoints != null) {
+            for (int i = 0; i < Waypoints.waypoints.Length; i++)
+            {
             Gizmos.color = Color.yellow;
+            // Draw a small sphere at each waypoint position
             Gizmos.DrawSphere(Waypoints.waypoints[i].position, 0.25f);
             // Draw a line between each waypoint and the next one
             if (i < Waypoints.waypoints.Length - 1)
@@ -18,6 +19,8 @@ public class Gizumosu : MonoBehaviour
                 Gizmos.DrawLine(Waypoints.waypoints[i].position, Waypoints.waypoints[i + 1].position);
             }
             
+            }
         }
+        
     }
 }
