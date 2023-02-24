@@ -5,13 +5,24 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
+<<<<<<< Updated upstream
     
+=======
+    public float spawnDelay = 1.0f;
+    public Transform[] spawnPoints;
+>>>>>>> Stashed changes
     private Transform target;
     private int waypointIndex = 0;
 
     void Start()
     {
         target = Waypoints.waypoints[waypointIndex];
+<<<<<<< Updated upstream
+=======
+
+        //This is method that can method in regular interval contain method to be called, and delay of invocation
+        InvokeRepeating("InvokeSpawnEnemy", spawnDelay, spawnDelay);
+>>>>>>> Stashed changes
     }
 
     void Update()
@@ -39,4 +50,13 @@ public class Enemy : MonoBehaviour
         waypointIndex++;
         target = Waypoints.waypoints[waypointIndex];
     }
+<<<<<<< Updated upstream
+=======
+
+    void InvokeSpawnEnemy()
+    {
+        SpawnPoints anotherSP = GameObject.Find("SpawnerPos").GetComponent<SpawnPoints>();
+        anotherSP.SpawnEnemy();
+    }
+>>>>>>> Stashed changes
 }
