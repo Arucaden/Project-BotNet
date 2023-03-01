@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     private Transform target;
     private int waypointIndex = 0;
     [SerializeField] private float speed = 10f;
+    public Transform SpawnPoint;
+    private Waypoint currentWaypoint;
 
 
 
@@ -14,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         //Get the waypoint from waypoint script
-        target = Waypoints.waypoints[waypointIndex];
+        target = SpawnPoint.GetComponent<Waypoint>().NextDestination;
     }
 
     // Update is called once per frame
@@ -38,13 +40,11 @@ public class EnemyMovement : MonoBehaviour
 
     void GetNextWaypoint()
     {
-        if (waypointIndex >= Waypoints.waypoints.Length - 1)
+        target = target.GetComponent<Waypoint>().NextDestination;
+
+        if (target.GetComponent<Waypoint>().IsWaypointEnd)
         {
-            // If the enemy has reached the last waypoint, destroy the game object
             Destroy(gameObject);
         }
-
-        waypointIndex++;
-        target = Waypoints.waypoints[waypointIndex];
     }
 }

@@ -21,11 +21,12 @@ public class EnemySpawner : MonoBehaviour
     {
         if (Time.time > nextSpawn)
         {
-            int randomIndex = Random.Range(0, spawnPoints.Length - 1);
+            int randomIndex = Random.Range(0, spawnPoints.Length);
             Transform spawnPoint = spawnPoints[randomIndex];
             //This method clone GO or prefab using specific command, contain object that to be instantiate, position of new object
             //Quaternion.identity means that the new object same rotation as old one
-            Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
+            enemy.GetComponent<EnemyController>().SpawnPoint = spawnPoint;
             
             nextSpawn = Time.time + spawnRate;
         }

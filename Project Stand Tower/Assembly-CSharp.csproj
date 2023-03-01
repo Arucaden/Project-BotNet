@@ -36,13 +36,14 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Script\Enemy.cs" />
+     <Compile Include="Assets\Script\_OLD\_Enemy.cs" />
      <Compile Include="Assets\Script\Gizumosu.cs" />
      <Compile Include="Assets\Script\PlaceTower.cs" />
-     <Compile Include="Assets\Script\Waypoints.cs" />
-     <Compile Include="Assets\Script\SpawnPoints.cs" />
-     <Compile Include="Assets\Script\TESTING\EnemySpawner.cs" />
-     <Compile Include="Assets\Script\TESTING\EnemyMovement.cs" />
+     <Compile Include="Assets\Script\_OLD\Waypoints.cs" />
+     <Compile Include="Assets\Script\_OLD\SpawnPoints.cs" />
+     <Compile Include="Assets\Script\EnemySpawner.cs" />
+     <Compile Include="Assets\Script\Waypoint.cs" />
+     <Compile Include="Assets\Script\EnemyController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.19f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
