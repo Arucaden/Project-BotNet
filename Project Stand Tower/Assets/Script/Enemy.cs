@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
+    public float speed = 10f;
+    //public GameObject enemyPrefab;
+    public float spawnDelay = 1.0f;
+    public Transform[] spawnPoints;
+    
     private Transform target;
-    [SerializeField] private float speed = 10f;
-    public Transform SpawnPoint;
-    private Waypoint currentWaypoint;
+    private int waypointIndex = 0;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
+       
         //Get the waypoint from waypoint script
-        target = SpawnPoint.GetComponent<Waypoint>().NextDestination;
+        target = Waypoints.waypoints[waypointIndex];
+
+        //This is method that can method in regular interval contain method to be called, and delay of invocation
+        InvokeRepeating("SpawnEnemy", spawnDelay, spawnDelay);
     }
 
-    // Update is called once per frame
     void Update()
     {
         // Move towards the current waypoint
@@ -35,15 +38,21 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
-
     void GetNextWaypoint()
     {
-        target = target.GetComponent<Waypoint>().NextDestination;
-
-        if (target.GetComponent<Waypoint>().IsWaypointEnd)
+        if (waypointIndex >= Waypoints.waypoints.Length - 1)
         {
+            // If the enemy has reached the last waypoint, destroy the game object
             Destroy(gameObject);
         }
+
+        waypointIndex++;
+        target = Waypoints.waypoints[waypointIndex];
+    }
+
+    void SpawnEnemy()
+    {
+        SpawnPoints invokeSP = GameObject.Find("SpawnerPos").GetComponent<SpawnPoints>();
+        invokeSP.SpawnEnemy();
     }
 }
