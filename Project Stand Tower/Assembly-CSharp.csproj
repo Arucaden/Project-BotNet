@@ -57,15 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Script\Enemy.cs" />
+    <Compile Include="Assets\Script\Tower.cs" />
     <Compile Include="Assets\Script\Gizumosu.cs" />
     <Compile Include="Assets\Script\Waypoint.cs" />
     <Compile Include="Assets\Script\PlaceTower.cs" />
     <Compile Include="Assets\Script\EnemyController.cs" />
+    <Compile Include="Assets\Script\EnemyHealth.cs" />
     <Compile Include="Assets\Script\Waypoints.cs" />
     <Compile Include="Assets\Script\SpawnPoints.cs" />
     <Compile Include="Assets\Script\EnemySpawner.cs" />
-    <Compile Include="Assets\Script\WaveManager.cs" />
-    <Compile Include="Assets\Script\Wave.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
